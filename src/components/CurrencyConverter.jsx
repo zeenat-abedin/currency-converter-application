@@ -5,16 +5,25 @@ import { fetchCurrencies, convertCurrency } from '../api/exchangeRates';
 import './CurrencyConverter.css';
 
 function CurrencyConverter() {
+  const [isLoading, setIsLoading] = useState(false); 
   const [currencies, setCurrencies] = useState([]);
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency] = useState('EUR');
   const [amount, setAmount] = useState(1);
   const [convertedAmount, setConvertedAmount] = useState(0);
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
-  // const [isLoadingCurrencies, setIsLoadingCurrencies] = useState(true);
 
   useEffect(() => {
-    fetchCurrencies().then(setCurrencies);
+    setIsLoading(true); 
+    fetchCurrencies()
+      .then((data) => {
+        setCurrencies(data);
+        setIsLoading(false); 
+      })
+      .catch((error) => {
+        console.error("Failed to fetch currencies:", error);
+        setIsLoading(false); 
+      });
   }, []);
 
   const handleConvert = async () => {
@@ -44,6 +53,7 @@ function CurrencyConverter() {
       <p>
         {amount} {fromCurrency} = {convertedAmount.toFixed(2)} {toCurrency}
       </p>
+       {isLoading && <p>Loading currencies...</p>}
     </div>
   );
 }

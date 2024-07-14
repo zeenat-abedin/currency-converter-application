@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import CurrencySelect from './CurrencySelect';
 import DatePicker from './DatePicker';
 import { fetchCurrencies, convertCurrency } from '../api/exchangeRates';
+import './CurrencyConverter.css';
 
 function CurrencyConverter() {
   const [currencies, setCurrencies] = useState([]);
@@ -10,6 +11,7 @@ function CurrencyConverter() {
   const [amount, setAmount] = useState(1);
   const [convertedAmount, setConvertedAmount] = useState(0);
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  // const [isLoadingCurrencies, setIsLoadingCurrencies] = useState(true);
 
   useEffect(() => {
     fetchCurrencies().then(setCurrencies);

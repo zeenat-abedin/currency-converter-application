@@ -55,7 +55,7 @@ function CurrencyConverter() {
       <p>
         {amount} {fromCurrency} = {convertedAmount.toFixed(2)} {toCurrency}
       </p>
-       {isLoading && <p>Loading currencies...</p>}
+       {isLoading && <p className="loading-text">Loading currencies...</p>}
     </div>
   );
 }

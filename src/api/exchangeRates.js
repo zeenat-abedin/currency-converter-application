@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = '';
+const API_KEY = '7bf893702a8b2282843aee15';
 const BASE_URL = 'https://v6.exchangerate-api.com/v6';
 
 export const fetchExchangeRates = async (date) => {

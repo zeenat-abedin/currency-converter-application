@@ -32,12 +32,13 @@ function CurrencyConverter() {
   };
 
   return (
-    <div>
+    <div className="container"> 
       <input
         type="number"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
+    <div className="currency-select">
       <CurrencySelect
         value={fromCurrency}
         onChange={setFromCurrency}
@@ -48,8 +49,9 @@ function CurrencyConverter() {
         onChange={setToCurrency}
         currencies={currencies}
       />
-      <DatePicker value={date} onChange={setDate} />
-      <button onClick={handleConvert}>Convert</button>
+    </div>
+    <DatePicker value={date} onChange={setDate} />
+    <button onClick={handleConvert}>Convert</button>
       <p>
         {amount} {fromCurrency} = {convertedAmount.toFixed(2)} {toCurrency}
       </p>

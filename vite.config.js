@@ -1,7 +1,16 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
+const base = '/currency-converter-application/';
+
 export default defineConfig({
   plugins: [react()],
-})
+  base,
+  build: {
+    outDir: 'dist',
+    assetsDir: '',
+    rollupOptions: {
+      input: '/index.html', 
+    },
+  },
+});

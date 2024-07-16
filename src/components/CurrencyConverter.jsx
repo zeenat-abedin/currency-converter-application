@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
+import { fetchCurrencies, convertCurrency } from '../api/exchangeRates';
 import CurrencySelect from './CurrencySelect';
 import DatePicker from './DatePicker';
-import { fetchCurrencies, convertCurrency } from '../api/exchangeRates';
 import './CurrencyConverter.css';
 
 function CurrencyConverter() {
